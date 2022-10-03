@@ -8,7 +8,11 @@ module.exports = {
     // layouts folder intentionally omitted
   ],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        'screen-1/3': '33vw',
+      },
+    },
   },
   plugins: [],
 };
