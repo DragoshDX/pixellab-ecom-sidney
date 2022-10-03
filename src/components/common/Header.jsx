@@ -27,8 +27,8 @@ export const Header = () => {
       </section>
 
       <nav
-        className={`absolute left-0 ${
-          menuOpen ? 'top-0' : '-top-full'
+        className={`absolute left-0 -top-full transition-transform transform-gpu ${
+          menuOpen ? 'translate-y-full' : ''
         } h-screen w-screen text-white bg-neutral-900`}
       >
         <ul>
