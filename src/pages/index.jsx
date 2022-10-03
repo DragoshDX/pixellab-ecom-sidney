@@ -9,7 +9,9 @@ const Home = () => {
       </Head>
 
       <Layout>
-        <main>las asa</main>
+        <main className="container px-4 lg:px-0 mx-auto">
+          <div className="flex justify-end text-zinc-400"></div>
+        </main>
       </Layout>
     </>
   );
