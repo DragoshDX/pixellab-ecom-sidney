@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 
-export const ProductGrid = ({ products = [] }) => {
+export const ProductGrid = ({ products = [], perRow = 4 }) => {
   if (products.length <= 0) {
     return <>There are no products</>;
   }
@@ -10,7 +10,7 @@ export const ProductGrid = ({ products = [] }) => {
     row-gap: 32px;
 
     @media (min-width: 1024px) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(${perRow}, 1fr);
       column-gap: 32px;
     }
   `;
