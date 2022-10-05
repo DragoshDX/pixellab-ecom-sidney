@@ -1,11 +1,30 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CartControl } from '../components/cart';
 import { GridControls, ProductGrid } from '../components/catalog';
 import { Layout } from '../layouts';
 
 const Home = () => {
   const [perRow, setPerRow] = useState(4);
+
+  // fara dependinte in array
+  // efectul ruleaza la prima executie a functiei Home
+  useEffect(() => {
+    fetch('https://swapi.dev/api/films')
+      .then((response) => {
+        // response.json -> Promise
+        return response.json();
+      })
+      .then((result) => {
+        console.log(result, 'then version');
+      });
+
+    (async () => {
+      const response = await fetch('https://swapi.dev/api/films');
+      const result = await response.json();
+      console.log(result, 'await version');
+    })();
+  }, []);
 
   return (
     <>
