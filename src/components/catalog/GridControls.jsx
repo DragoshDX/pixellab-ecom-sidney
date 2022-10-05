@@ -6,7 +6,7 @@ export const GridControls = () => {
   const [itemsPerRow, setItemsPerRow] = useState('1/row');
 
   return (
-    <ul className="flex border border-l-0 border-zinc-400">
+    <ul className="flex border border-l-0 border-r-0 border-zinc-400">
       <li>
         <button
           title="One per row"
