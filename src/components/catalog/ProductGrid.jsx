@@ -1,5 +1,4 @@
 import { css } from '@emotion/css';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const ProductGrid = ({ products = [], perRow = 4 }) => {
