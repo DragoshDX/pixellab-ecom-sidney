@@ -57,6 +57,7 @@ const Home = () => {
 
                   return (
                     <li
+                      key={index}
                       className={`${i === page ? 'font-bold' : ''}`}
                       onClick={() => {
                         if (i === page) {
