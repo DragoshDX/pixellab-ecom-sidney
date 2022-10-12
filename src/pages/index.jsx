@@ -2,13 +2,14 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { CartControl } from '../components/cart';
 import { GridControls, Pagination, ProductGrid } from '../components/catalog';
-import { useProducts } from '../hooks';
+import { useCart, useProducts } from '../hooks';
 import { Layout } from '../layouts';
 
 const Home = () => {
   const [perRow, setPerRow] = useState(4);
   const [products] = useProducts();
   const [paginatedProducts, setPaginatedProducts] = useState([]);
+  const cart = useCart(2);
 
   return (
     <>
@@ -21,7 +22,7 @@ const Home = () => {
           <header className="flex justify-end text-zinc-400">
             <GridControls setPerRow={setPerRow}></GridControls>
 
-            <CartControl></CartControl>
+            <CartControl cart={cart}></CartControl>
           </header>
 
           <section className="mt-16">

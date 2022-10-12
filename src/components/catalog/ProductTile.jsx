@@ -12,7 +12,7 @@ export const ProductTile = ({ product }) => {
     <article className="w-full">
       <header>
         <div className="w-full text-center">
-          <Link href={`/product/${id}`}>
+          <Link href={`/products/${id}`}>
             <a title={title}>
               <Image
                 alt={`Image for product ${title}`}
