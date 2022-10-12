@@ -1,34 +1,42 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { baseUrl } from '..';
 import { CartControl } from '../components/cart';
 import { GridControls, ProductGrid } from '../components/catalog';
+import { useProducts } from '../hooks';
 import { Layout } from '../layouts';
 
 const Home = () => {
   const [perRow, setPerRow] = useState(4);
-  const [products, setProducts] = useState([]);
+  const [products] = useProducts();
   const [pagination, setPagination] = useState({
-    perPage: 4,
+    perPage: 8,
     page: 1,
-    total: 20,
+    total: 0,
   });
+
+  useEffect(() => {
+    setPagination({
+      ...pagination,
+      total: products.length,
+    });
+  }, [products]);
+
+  useEffect(() => {
+    const { total, page, perPage } = pagination;
+
+    if (total === 0) {
+      return;
+    }
+
+    const newProducts = [...products].splice(perPage * (page - 1), perPage);
+
+    setPaginatedProducts(newProducts);
+  }, [pagination]);
+
+  const [paginatedProducts, setPaginatedProducts] = useState([]);
 
   const { perPage, page, total } = pagination;
   const pagesCount = Math.ceil(total / perPage);
-
-  // fara dependinte in array
-  // efectul ruleaza la prima executie a functiei Home
-  useEffect(() => {
-    fetch(`${baseUrl}/products?limit=${perPage}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        // never mutate state
-        setProducts(result);
-      });
-  }, []);
 
   return (
     <>
@@ -45,7 +53,10 @@ const Home = () => {
           </header>
 
           <section className="mt-16">
-            <ProductGrid products={products} perRow={perRow}></ProductGrid>
+            <ProductGrid
+              products={paginatedProducts}
+              perRow={perRow}
+            ></ProductGrid>
           </section>
 
           <section>
