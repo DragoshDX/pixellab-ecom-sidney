@@ -40,6 +40,10 @@ export const Layout = ({ children }) => {
 
   const mainAreaCss = css`
     grid-area: main-area;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
   `;
 
   const footerCss = css`

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const ProductTile = ({ product }) => {
   const { title, price, image, id } = product;
@@ -10,14 +11,17 @@ export const ProductTile = ({ product }) => {
   return (
     <article className="w-full">
       <header>
-        <div className="w-full h-72 text-center">
+        <div className="w-full text-center">
           <Link href={`/product/${id}`}>
             <a title={title}>
-              <img
+              <Image
                 alt={`Image for product ${title}`}
                 src={image}
-                className="h-full inline"
-              ></img>
+                width={200}
+                height={200}
+                objectFit="contain"
+                className="inline"
+              ></Image>
             </a>
           </Link>
         </div>
