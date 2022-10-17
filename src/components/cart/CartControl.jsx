@@ -1,9 +1,23 @@
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from '../../pages/_app';
 
 export const CartControl = () => {
   const { cart } = useContext(AppContext);
+
+  if (cart === null) {
+    return <></>;
+  }
+
+  const { products } = cart;
+
+  const cartQty = products.reduce((cartQty, product) => {
+    const { quantity } = product;
+
+    cartQty += quantity;
+
+    return cartQty;
+  }, 0);
 
   return (
     <ul className="border border-zinc-400">
@@ -13,7 +27,7 @@ export const CartControl = () => {
             className="w-24 h-24 flex justify-center items-center"
             title="Cart"
           >
-            {cart.qty}
+            {cartQty}
           </a>
         </Link>
       </li>
