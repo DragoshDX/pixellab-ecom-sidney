@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { CartControl } from '../components/cart';
 import { GridControls, Pagination, ProductGrid } from '../components/catalog';
 import { useCart, useProducts } from '../hooks';
