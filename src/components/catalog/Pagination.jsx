@@ -9,10 +9,11 @@ export const Pagination = ({ products, setPaginatedProducts }) => {
 
   useEffect(() => {
     setPagination({
-      ...pagination,
+      perPage: pagination.perPage,
+      page: pagination.page,
       total: products.length,
     });
-  }, [products, setPagination]);
+  }, [products, setPagination, pagination.perPage, pagination.page]);
 
   useEffect(() => {
     const { total, page, perPage } = pagination;
