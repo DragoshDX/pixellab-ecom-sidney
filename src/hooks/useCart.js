@@ -12,7 +12,7 @@ export const useCart = (cartId = 2) => {
       .then((result) => {
         setCart(result);
       });
-  }, []);
+  }, [setCart]);
 
   return cart;
 };

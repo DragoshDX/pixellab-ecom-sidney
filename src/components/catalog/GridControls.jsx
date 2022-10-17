@@ -11,7 +11,7 @@ export const GridControls = ({ setPerRow = () => {} }) => {
     const perRow = parseInt(itemsPerRow);
 
     setPerRow(perRow);
-  }, [itemsPerRow]);
+  }, [itemsPerRow, setPerRow]);
 
   return (
     <ul className="flex border border-l-0 border-r-0 border-zinc-400">
