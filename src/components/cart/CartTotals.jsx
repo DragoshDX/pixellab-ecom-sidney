@@ -16,7 +16,17 @@ export const CartTotals = () => {
         </ul>
       </section>
 
-      <footer></footer>
+      <footer>
+        <button
+          type="button"
+          title="Place Order"
+          onClick={() => {
+            console.log(cart);
+          }}
+        >
+          Place Order
+        </button>
+      </footer>
     </>
   );
 };
