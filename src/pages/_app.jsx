@@ -5,10 +5,10 @@ import './../styles/index.css';
 export const AppContext = createContext();
 
 function MyApp({ Component, pageProps }) {
-  const { cart, setCart } = useCart();
+  const { cart, setCart, addProduct } = useCart();
 
   return (
-    <AppContext.Provider value={{ cart, setCart }}>
+    <AppContext.Provider value={{ cart, setCart, addProduct }}>
       <Component {...pageProps} />
     </AppContext.Provider>
   );
