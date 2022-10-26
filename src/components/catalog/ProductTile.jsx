@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { AddToCart } from './AddToCart';
 
 export const ProductTile = ({ product }) => {
   const { title, price, image, id } = product;
@@ -31,6 +32,8 @@ export const ProductTile = ({ product }) => {
         <h1 className="uppercase text-zinc-400 mb-2">{title}</h1>
 
         <div className="text-zinc-900 font-light">{formattedPrice}</div>
+
+        <AddToCart product={product}></AddToCart>
       </section>
     </article>
   );
