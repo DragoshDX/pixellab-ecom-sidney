@@ -9,7 +9,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AppContext.Provider value={{ cart, setCart, alterProduct }}>
-      {JSON.stringify(cart)}
       <Component {...pageProps} />
     </AppContext.Provider>
   );
