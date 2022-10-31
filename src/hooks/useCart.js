@@ -15,9 +15,9 @@ const alterCart = (cart, productId, quantity) => {
     });
   } else {
     if (product.quantity + quantity <= 0) {
-      const index = products.indexOf(product);
-
-      cart.products.slice().splice(index, 1);
+      cart.products = cart.products.filter((product) => {
+        return product.productId !== productId;
+      });
     } else {
       product.quantity += quantity;
     }
