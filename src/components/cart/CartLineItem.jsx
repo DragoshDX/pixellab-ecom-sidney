@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContext } from 'react';
 import { useProduct } from '../../hooks';
+import { AppContext } from '../../pages/_app';
 
 export const CartLineItem = ({ product }) => {
   const { quantity, productId } = product;
   const { product: cartItem } = useProduct(productId);
   const isLoaded = cartItem !== null;
+  const { alterProduct } = useContext(AppContext);
 
   if (!isLoaded) {
     return <></>;
@@ -44,7 +47,7 @@ export const CartLineItem = ({ product }) => {
             title="Decrease"
             className="p-4"
             onClick={() => {
-              alert('-' + id);
+              alterProduct(id, -1);
             }}
           >
             -
@@ -55,7 +58,7 @@ export const CartLineItem = ({ product }) => {
             title="Increase"
             className="p-4"
             onClick={() => {
-              alert('+' + id);
+              alterProduct(id, 1);
             }}
           >
             +

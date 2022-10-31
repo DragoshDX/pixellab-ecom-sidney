@@ -14,7 +14,13 @@ const alterCart = (cart, productId, quantity) => {
       quantity,
     });
   } else {
-    product.quantity += quantity;
+    if (product.quantity + quantity <= 0) {
+      const index = products.indexOf(product);
+
+      cart.products.slice().splice(index, 1);
+    } else {
+      product.quantity += quantity;
+    }
   }
 
   return cart;
