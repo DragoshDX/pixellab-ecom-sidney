@@ -27,6 +27,7 @@ export const CartLineItem = ({ product }) => {
               width="100"
               height="100"
               objectFit="contain"
+              alt=""
             ></Image>
           </a>
         </Link>
@@ -36,7 +37,31 @@ export const CartLineItem = ({ product }) => {
         </Link>
       </td>
       <td></td>
-      <td>{quantity}</td>
+      <td>
+        <div className="border">
+          <button
+            type="button"
+            title="Decrease"
+            className="p-4"
+            onClick={() => {
+              alert('-' + id);
+            }}
+          >
+            -
+          </button>
+          {quantity}
+          <button
+            type="button"
+            title="Increase"
+            className="p-4"
+            onClick={() => {
+              alert('+' + id);
+            }}
+          >
+            +
+          </button>
+        </div>
+      </td>
       <td>{formattedPrice}</td>
     </tr>
   );

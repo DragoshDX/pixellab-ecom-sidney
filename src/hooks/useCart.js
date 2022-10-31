@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { baseUrl } from '..';
 
-const alterCart = (cart, productId) => {
+const alterCart = (cart, productId, quantity) => {
   const { products } = cart;
 
   const product = products.find((product) => {
@@ -11,10 +11,10 @@ const alterCart = (cart, productId) => {
   if (product === undefined) {
     products.push({
       productId,
-      quantity: 1,
+      quantity,
     });
   } else {
-    product.quantity += 1;
+    product.quantity += quantity;
   }
 
   return cart;
@@ -33,10 +33,10 @@ export const useCart = (cartId = 2) => {
       });
   }, [setCart, cartId]);
 
-  const addProduct = (productId) => {
-    const newCart = alterCart(cart, productId);
+  const alterProduct = (productId, quantity = 1) => {
+    const newCart = alterCart(cart, productId, quantity);
     setCart({ ...newCart });
   };
 
-  return { cart, setCart, addProduct };
+  return { cart, setCart, alterProduct };
 };
